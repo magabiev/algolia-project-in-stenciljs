@@ -1,0 +1,54 @@
+.block{
+  height: 100%;
+  padding-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 48px;
+}
+span{
+  color: #5468ff;
+  cursor: pointer;
+}
+.img{
+  width: 100%;
+  border-radius: 6px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+.header{
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 16px;
+}
+.text{
+  font-weight: 400;
+  font-size: 14px;
+  color: #5d6494;
+  margin-top: 8px;
+}
+.author{
+  margin-top: 24px;
+}
+.author_info{
+  margin-left: 8px;
+  font-weight: 400;
+  color: #5d6494;
+}
+.author_img{
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-image: url(https://secure.gravatar.com/avatar/ab5610fa71cfc5a9cfb78865ca64621b?s=96&d=mm&r=g);
+}
+.name{
+  font-size: 14px;
+  font-weight: 400;
+}
+.action{
+  font-size: 12px;
+  font-weight: 400;
+}

@@ -1,0 +1,156 @@
+.header_block{
+  padding: 48px 0;
+  max-width: 100%;
+}
+h1{
+  font-weight: 400;
+  color: #3A416F;
+  font-size: 36px;
+}
+.back_block{
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  color: #5d6494;
+  font-weight: 400;
+  font-size: 14px;
+}
+.back{
+  font-weight: 400;
+  font-size: 18px;
+}
+.back_adaptive{
+  display: none;
+}
+.menu{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  padding: 0 0 0 32px;
+}
+.menu_item{
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700;
+  color: #848ab8;
+  padding: 0 0 16px;
+  border-bottom: 3px solid white;
+}
+.menu_item:hover{
+  border-bottom: 3px solid #5468ff;
+  color: #5d6494;
+}
+.input_section{
+  background-color: #f5f5fa;
+  padding: 0 32px;
+  height: 80px;
+}
+.input_block{
+  outline: none;
+  border: none;
+  background: inherit;
+  font-size: 24px;
+  color: #3a416f;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 100%;
+  height: 80px;
+}
+.search_btn{
+  font-size: 25px;
+  color: #5468ff;
+}
+.search_img{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 16px;
+  width: 120px;
+}
+.category{
+  margin: 16px 0 0;
+  max-width: 100%;
+}
+.category_list{
+  padding: 0;
+  list-style: none;
+}
+.hints{
+  font-size: 12px;
+  padding: 8px;
+  text-align: center;
+  background: #f5f5fa;
+  color: #5d6494;
+  border-radius: 5px;
+  transition: 0.2s;
+  width: inherit;
+  max-width: 100%;
+  margin-left: 13px;
+}
+.category_list li:first-child .hints{
+  margin-left: 0;
+}
+.hints:hover{
+  background-color: #d3d3dd;
+}
+@media only screen and (max-width: 425px ) {
+  h1{
+    font-weight: 400;
+    color: #3A416F;
+    font-size: 28px;
+  }
+
+}
+@media only screen and (max-width: 530px ){
+  .input_block{
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 645px ){
+  .search_img{
+    height: 20px;
+    width: 30px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("https://res.cloudinary.com/hilnmyskv/image/upload/q_auto/v1590760208/Algolia_com_Website_assets/images/shared/algolia_logo/algolia-blue-mark.svg");
+  }
+}
+@media only screen and (max-width: 991px ){
+  .back_adaptive{
+    text-align: center;
+    display: block;
+    position: fixed;
+    bottom: 20px;
+    z-index: 5;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    color: white;
+    background-color: #3a416f;
+    box-shadow: 0 5px 15px 0 rgba(37,44,97,.15), 0 2px 4px 0 rgba(93,100,148,.2);
+  }
+  .back_in{
+    display: flex;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    font-size: 25px;
+  }
+  .header_block{
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 767px ){
+  .menu{
+    padding-left: 0;
+  }
+
+}
+@media only screen and (max-width: 959px ){
+  .category{
+    display: none;
+  }
+}
