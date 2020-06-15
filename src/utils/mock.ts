@@ -59,6 +59,7 @@ export const blockSection = [
     header: 'Blog',
     results: 138,
     link: 'view blog',
+    pageActive: 1,
     resultPages: 12,
     blocks:[
       {

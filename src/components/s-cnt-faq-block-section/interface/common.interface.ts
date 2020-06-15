@@ -7,5 +7,6 @@ export interface SFaqBlockSection {
   results: number;
   link: string;
   resultPages: number;
+  pageActive: number;
   blocks: any;
 }

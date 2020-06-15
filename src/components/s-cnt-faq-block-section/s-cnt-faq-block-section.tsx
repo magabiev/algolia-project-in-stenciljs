@@ -59,7 +59,7 @@ export class SCntFaqBlockSection implements ComponentInterface {
                     ><i class="fas fa-arrow-right"></i></button>
                   </div>
                   <div class="result_page ml-3">
-                    1-{item.resultPages}
+                    {item.pageActive} -{item.resultPages}
                   </div>
                   <div class="result_link ml-3 clicked" onClick={() => this.clickLink.emit({place: 'link', item: item})}
                   >
@@ -67,7 +67,7 @@ export class SCntFaqBlockSection implements ComponentInterface {
                   </div>
                 </div>
               </div>
-              {this.getBlocks(item.blocks)}
+              <GetBlocks arr={item.blocks}/>
             </div>
             <div class="bottom_block"></div>
           </div>
@@ -75,13 +75,13 @@ export class SCntFaqBlockSection implements ComponentInterface {
       })
     );
   }
-  /**
-   *  Получение вложенного компонента 'blocks'
-   */
-private getBlocks = (props) =>{
-    let item = props.slice(0,12)
-    return(
-      <s-cnt-faq-blocks blocks={item}/>
-    )
 }
+/**
+ *  Получение вложенного компонента 'blocks'
+ */
+const GetBlocks = (props) =>{
+  let item = props.arr.slice(0,12)
+  return(
+    <s-cnt-faq-blocks blocks={item}/>
+  )
 }
