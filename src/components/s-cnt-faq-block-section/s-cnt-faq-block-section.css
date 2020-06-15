@@ -3,6 +3,17 @@
   font-size: 24px;
   color: #3A416F;
 }
+.header:empty{
+  width: 47px;
+  height: 36px;
+  background-color: #f5f5fa;
+  border-radius: 2px;
+  -webkit-animation: loading 1s infinite ease-in-out;
+}
+.header:empty{
+  background-color: #ccc;
+  -webkit-animation: loading 1s infinite ease-in-out;
+}
 .result{
   color: #848ab8;
   font-size: 14px;
@@ -42,5 +53,16 @@
     width: 100%;
     position: fixed;
     bottom: 0;
+  }
+}
+@keyframes loading {
+  0%{
+    background-color: #f5f5fa;
+  }
+  50%{
+    background-color: #fefefe;
+  }
+  100%{
+    background-color: #f5f5fa;
   }
 }

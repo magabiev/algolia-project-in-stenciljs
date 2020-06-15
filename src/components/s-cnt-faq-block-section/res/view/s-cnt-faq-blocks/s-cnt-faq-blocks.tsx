@@ -51,7 +51,7 @@ private getBlocks = (props) =>{
                 <div class="header clicked" onClick={() => this.clickBlockHeader.emit({place: 'header', item: item})}
                      innerHTML={item.header}></div>
                 <div class="text clicked" onClick={() => this.clickBlockText.emit({place: 'text', item: item})}
-                     innerHTML={item.text}></div>
+                     innerHTML={item.text}  ></div>
               </div>
               <div class="author d-flex align-items-center clicked" onClick={() => this.clickBlockAuthor.emit({place: 'author', item: item})}
               >

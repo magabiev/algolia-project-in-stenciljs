@@ -24,31 +24,31 @@ export const header = [
     ],
     category: [
       {
-        id:'Site Search', name: 'Site Search'
+        id:'site-search', name: 'Site Search'
       },
       {
-        id:'Search API',name: 'Search API'
+        id:'search-api',name: 'Search API'
       },
       {
-        id:'Personalization', name: 'Personalization'
+        id:'personalization', name: 'Personalization'
       },
       {
-        id:'Analytics', name: 'Analytics'
+        id:'analytics', name: 'Analytics'
       },
       {
-        id:'InstantSearch', name: 'InstantSearch'
+        id:'instantSearch', name: 'InstantSearch'
       },
       {
-        id:' Customers', name: ' Customers'
+        id:' customers', name: ' Customers'
       },
       {
-        id:'Pricing', name: 'Pricing'
+        id:'pricing', name: 'Pricing'
       },
       {
-        id:'Mobile Search', name: 'Mobile Search'
+        id:'mobile-search', name: 'Mobile Search'
       },
       {
-        id:'E-commerce', name: 'E-commerce'
+        id:'e-commerce', name: 'E-commerce'
       }
     ],
   }
@@ -142,7 +142,7 @@ export const blockSection = [
       {
         id: 9,
         img:'https://blog-api.algolia.com/wp-content/uploads/2015/01/hn-blog.png',
-        header: `New experimental version of Hacker News <span>Search</span>> built with Algoli`,
+        header: `New experimental version of Hacker News <span>Search</span> built with Algoli`,
         text: `… to hn.algolia.com we\'re also providing the HN <span>Search API</span>: a lot of you have used it to …`,
         authorAvatar: 'https://secure.gravatar.com/avatar/e94df49f046da9bdb0c1006f72d570c2?s=96&d=mm&r=g',
         authorName:'kevin',

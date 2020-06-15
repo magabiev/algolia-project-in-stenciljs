@@ -1,6 +1,6 @@
 {
-  "name": "algolia",
-  "version": "0.0.1",
+  "name": "faq-algolia",
+  "version": "0.0.4",
   "description": "Stencil Component Starter",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

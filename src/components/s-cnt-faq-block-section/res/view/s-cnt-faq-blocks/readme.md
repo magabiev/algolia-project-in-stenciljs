@@ -7,19 +7,19 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type           | Default |
-| -------- | --------- | ----------- | -------------- | ------- |
-| `blocks` | --        |             | `SFaqBlocks[]` | `[]`    |
+| Property | Attribute | Description                            | Type           | Default |
+| -------- | --------- | -------------------------------------- | -------------- | ------- |
+| `blocks` | --        | Получение данных из массива для вывода | `SFaqBlocks[]` | `[]`    |
 
 
 ## Events
 
-| Event              | Description | Type               |
-| ------------------ | ----------- | ------------------ |
-| `clickBlockAuthor` |             | `CustomEvent<any>` |
-| `clickBlockHeader` |             | `CustomEvent<any>` |
-| `clickBlockImg`    |             | `CustomEvent<any>` |
-| `clickBlockText`   |             | `CustomEvent<any>` |
+| Event              | Description          | Type               |
+| ------------------ | -------------------- | ------------------ |
+| `clickBlockAuthor` | Клик по блоку автора | `CustomEvent<any>` |
+| `clickBlockHeader` | Клик по Заголовку    | `CustomEvent<any>` |
+| `clickBlockImg`    | Клик по картинке     | `CustomEvent<any>` |
+| `clickBlockText`   | Клик по тексту       | `CustomEvent<any>` |
 
 
 ## Dependencies

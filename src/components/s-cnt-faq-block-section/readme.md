@@ -7,18 +7,22 @@
 
 ## Properties
 
-| Property       | Attribute | Description | Type                 | Default |
-| -------------- | --------- | ----------- | -------------------- | ------- |
-| `blockSection` | --        |             | `SFaqBlockSection[]` | `[]`    |
+| Property       | Attribute | Description                            | Type                 | Default |
+| -------------- | --------- | -------------------------------------- | -------------------- | ------- |
+| `blockSection` | --        | Получение данных из массива для вывода | `SFaqBlockSection[]` | `[]`    |
 
 
 ## Events
 
-| Event        | Description | Type               |
-| ------------ | ----------- | ------------------ |
-| `clickLeft`  |             | `CustomEvent<any>` |
-| `clickLink`  |             | `CustomEvent<any>` |
-| `clickRight` |             | `CustomEvent<any>` |
+| Event              | Description                              | Type               |
+| ------------------ | ---------------------------------------- | ------------------ |
+| `clickBlockAuthor` | Клик по блоку автора компонента 'blocks' | `CustomEvent<any>` |
+| `clickBlockHeader` | Клик по Заголовку компонента 'blocks'    | `CustomEvent<any>` |
+| `clickBlockImg`    | Клик по картинке компонента 'blocks'     | `CustomEvent<any>` |
+| `clickBlockText`   | Клик по тексту компонента 'blocks'       | `CustomEvent<any>` |
+| `clickLeft`        | Клик по кнопке на страницу вперед        | `CustomEvent<any>` |
+| `clickLink`        | Клик по ссылке                           | `CustomEvent<any>` |
+| `clickRight`       | Клик по кнопке на страницу назад         | `CustomEvent<any>` |
 
 
 ## Dependencies

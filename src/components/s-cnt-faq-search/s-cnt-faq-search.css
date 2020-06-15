@@ -7,6 +7,13 @@ h1{
   color: #3A416F;
   font-size: 36px;
 }
+h1:empty{
+  width: 350px;
+  height: 40px;
+  background-color: #f5f5fa;
+  border-radius: 2px;
+  -webkit-animation: loading 1s infinite ease-in-out;
+}
 .back_block{
   width: 25px;
   height: 25px;
@@ -35,6 +42,13 @@ h1{
   color: #848ab8;
   padding: 0 0 16px;
   border-bottom: 3px solid white;
+}
+.menu_item:empty{
+  width: 50px;
+  height: 22px;
+  margin-bottom: 16px;
+  background-color: #f5f5fa;
+  -webkit-animation: loading 1s infinite ease-in-out;
 }
 .menu_item:hover{
   border-bottom: 3px solid #5468ff;
@@ -67,6 +81,13 @@ h1{
   height: 16px;
   width: 120px;
 }
+.search_img:empty{
+  height: 16px;
+  width: 120px;
+  border-radius: 2px;
+  background-color: #eeeef3;
+  -webkit-animation: loading 1s infinite ease-in-out;
+}
 .category{
   margin: 16px 0 0;
   max-width: 100%;
@@ -87,11 +108,31 @@ h1{
   max-width: 100%;
   margin-left: 13px;
 }
+.hints:empty{
+  margin: auto;
+  width: 115px;
+  max-width: 100%;
+  height: 33px;
+  border-radius: 5px;
+  background-color: #f5f5fa;
+  -webkit-animation: loading 1s infinite ease-in-out;
+}
 .category_list li:first-child .hints{
   margin-left: 0;
 }
 .hints:hover{
   background-color: #d3d3dd;
+}
+@media only screen and (max-width: 1065px ){
+  .hints:empty{
+    margin: auto;
+    width: 90px;
+    max-width: 100%;
+    height: 33px;
+    border-radius: 5px;
+    background-color: #f5f5fa;
+    -webkit-animation: loading 1s infinite ease-in-out;
+  }
 }
 @media only screen and (max-width: 425px ) {
   h1{
@@ -108,12 +149,18 @@ h1{
 }
 @media only screen and (max-width: 645px ){
   .search_img{
-    height: 20px;
-    width: 30px;
+    width: 20px !important;
+    overflow-y: hidden;
     background-size: cover;
-    background-position: center;
+    background-position: -55px;
     background-repeat: no-repeat;
-    background-image: url("https://res.cloudinary.com/hilnmyskv/image/upload/q_auto/v1590760208/Algolia_com_Website_assets/images/shared/algolia_logo/algolia-blue-mark.svg");
+  }
+  .search_img:empty{
+    width: 20px;
+    height: 16px;
+    border-radius: 2px;
+    background-color: #eeeef3;
+    -webkit-animation: loading 1s infinite ease-in-out;
   }
 }
 @media only screen and (max-width: 991px ){
@@ -152,5 +199,16 @@ h1{
 @media only screen and (max-width: 959px ){
   .category{
     display: none;
+  }
+}
+@keyframes loading {
+  0%{
+    background-color: #f5f5fa;
+  }
+  50%{
+    background-color: #fefefe;
+  }
+  100%{
+    background-color: #f5f5fa;
   }
 }
