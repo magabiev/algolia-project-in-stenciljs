@@ -1,10 +1,12 @@
 /**
  *  Элементы компонента 'header'
  */
-export interface SFaqElements {
+export interface SFaqSearchElements {
   id: any;
-  img: any;
-  header: string;
-  headerMenu: any;
-  category: any;
+  name: string;
+  active: boolean;
+}
+export interface SFaqLogoElements {
+  id: any;
+  link: string;
 }

@@ -8,5 +8,4 @@ export interface SFaqBlocks {
   text: string;
   authorAvatar: string;
   authorName: string;
-  authorAction: string;
 }

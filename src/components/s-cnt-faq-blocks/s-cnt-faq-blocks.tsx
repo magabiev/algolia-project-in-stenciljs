@@ -30,9 +30,11 @@ export class SCntFaqBlocks implements ComponentInterface {
   @Event() clickBlockImg: EventEmitter;
   render() {
     return (
+      <div class="my_container">
         <div class="row">
           {this.getBlocks(this.blocks)}
         </div>
+      </div>
     );
   }
   /**
@@ -61,9 +63,7 @@ private getBlocks = (props) =>{
                   <div class="name">
                     {item.authorName}
                   </div>
-                  <div class="action">
-                    {item.authorAction}
-                  </div>
+                  {item.authorAction ? this.getAction(item.authorAction) : ''}
                 </div>
               </div>
             </div>
@@ -72,4 +72,14 @@ private getBlocks = (props) =>{
       })
     )
 }
+  /**
+   * Данные о должности если есть
+   */
+  private getAction = (item) => {
+    return(
+      <div class="action">
+        {item}
+      </div>
+    )
+  }
 }

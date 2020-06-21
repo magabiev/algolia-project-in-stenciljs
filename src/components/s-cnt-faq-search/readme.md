@@ -7,16 +7,17 @@
 
 ## Properties
 
-| Property | Attribute | Description             | Type             | Default |
-| -------- | --------- | ----------------------- | ---------------- | ------- |
-| `header` | --        | Прием данных из массива | `SFaqElements[]` | `[]`    |
+| Property   | Attribute | Description                           | Type                   | Default |
+| ---------- | --------- | ------------------------------------- | ---------------------- | ------- |
+| `category` | --        | Прием данных о категориях  из массива | `SFaqSearchElements[]` | `[]`    |
+| `logo`     | --        | Прием данных логотипе  из массива     | `SFaqLogoElements[]`   | `[]`    |
+| `menu`     | --        | Прием данных menu  из массива         | `SFaqSearchElements[]` | `[]`    |
 
 
 ## Events
 
 | Event           | Description           | Type               |
 | --------------- | --------------------- | ------------------ |
-| `clickBack`     | Клик по кнопке назад  | `CustomEvent<any>` |
 | `clickCategory` | Клик по категориям    | `CustomEvent<any>` |
 | `clickLogo`     | Клик по Логотипу      | `CustomEvent<any>` |
 | `clickMenu`     | Клик по  ссылкам меню | `CustomEvent<any>` |
@@ -27,12 +28,12 @@
 
 ### Used by
 
- - [my-component](../my-component)
+ - [first-page](../first-page)
 
 ### Graph
 ```mermaid
 graph TD;
-  my-component --> s-cnt-faq-search
+  first-page --> s-cnt-faq-search
   style s-cnt-faq-search fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

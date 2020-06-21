@@ -26,12 +26,12 @@
 
 ### Used by
 
- - [s-cnt-faq-block-section](../../..)
+ - [first-page](../first-page)
 
 ### Graph
 ```mermaid
 graph TD;
-  s-cnt-faq-block-section --> s-cnt-faq-blocks
+  first-page --> s-cnt-faq-blocks
   style s-cnt-faq-blocks fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

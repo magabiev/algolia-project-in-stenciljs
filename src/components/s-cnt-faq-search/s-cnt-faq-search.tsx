@@ -1,5 +1,5 @@
-import {Component, ComponentInterface, EventEmitter, Event,  h, Prop} from '@stencil/core';
-import {SFaqElements} from "./interface/common.interface";
+import {Component, ComponentInterface, EventEmitter, Event, h, Prop, State} from '@stencil/core';
+import {SFaqSearchElements, SFaqLogoElements} from "./interface/common.interface";
 
 @Component({
   tag: 's-cnt-faq-search',
@@ -9,13 +9,17 @@ import {SFaqElements} from "./interface/common.interface";
 })
 export class SCntFaqSearch implements ComponentInterface {
   /**
-   *  Прием данных из массива
+   *  Прием данных menu  из массива
    */
-  @Prop() header: SFaqElements[] = [];
+  @Prop() menu: SFaqSearchElements[] = [];
   /**
-   *  Клик по кнопке назад
+   *  Прием данных о категориях  из массива
    */
-  @Event() clickBack: EventEmitter;
+  @Prop() category: SFaqSearchElements[] = [];
+  /**
+   *  Прием данных логотипе  из массива
+   */
+  @Prop() logo: SFaqLogoElements[] = [];
   /**
    *  Клик по  ссылкам меню
    */
@@ -32,65 +36,45 @@ export class SCntFaqSearch implements ComponentInterface {
    *  Клик по категориям
    */
   @Event() clickCategory: EventEmitter;
+  /**
+   *  Состояние ссылок меню при нажатии
+   */
+  @State() activeLink: boolean;
+  /**
+   *  Состояние ссылок категорий при нажатии
+   */
+  @State() activeCategory: boolean;
+
   render() {
     return (
-      this.header.map(item => {
-        return(
-          <div class="my_container">
+      <div class="my_container">
 
-            <div class="header_block d-flex justify-content-between">
-              <div>
-                <h1>
-                  {item.header}
-                </h1>
-              </div>
-              <div class="back_block clicked" onClick={() => this.clickBack.emit('Back')}
-              >
-                <div class="back"><i class="fas fa-times"></i></div>
-                <div>esc</div>
-              </div>
-            </div>
-
-            <div class="back_adaptive clicked" onClick={() => this.clickBack.emit('Back')}>
-              <div class="back_in">
-                <div class="m-auto">
-                  <i class="fas fa-times"></i>
-                </div>
-              </div>
-            </div>
-
-            <div class="search_block">
-              <div class="row">
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 col-12">
-                  <ul class="menu d-flex justify-content-between">
-                    {this.getLink(item.headerMenu)}
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div class="input_section d-flex align-items-center justify-content-between">
-              <div class="search_btn clicked" onClick={() => this.clickSearch.emit('Search')}
-              >
-                <i class="fas fa-search"></i>
-              </div>
-              <div class="flex-grow-1">
-                <input class="input_block" type="text" placeholder="Learn about search-as-a-service…"/>
-              </div>
-              <div class="search_img" onClick={() => this.clickLogo.emit({place: 'logo', item: item})}
-                   style={{ backgroundImage: "url(" + item.img + ")" }}
-              >
-              </div>
-            </div>
-
-            <div class="category">
-              <ul class="category_list d-flex">
-                {this.getCategory(item.category)}
+        <div class="search_block">
+          <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 col-12">
+              <ul class="menu d-flex justify-content-between">
+                {this.getLink(this.menu)}
               </ul>
             </div>
           </div>
-        )
-      })
+        </div>
+
+        <div class="input_section d-flex align-items-center justify-content-between">
+          <div class="search_btn clicked" onClick={() => this.clickSearch.emit('Search')}>
+            <i class="fas fa-search"></i>
+          </div>
+          <div class="flex-grow-1">
+            <input class="input_block" type="text" placeholder="Learn about search-as-a-service…"/>
+          </div>
+          {this.getLogo(this.logo)}
+        </div>
+
+        <div class="category">
+          <ul class="category_list d-flex">
+            {this.getCategory(this.category)}
+          </ul>
+        </div>
+      </div>
     );
   }
   /**
@@ -102,14 +86,22 @@ export class SCntFaqSearch implements ComponentInterface {
       item.map(item => {
         return(
           <li>
-            <div class="menu_item clicked" onClick={() => this.clickMenu.emit({place: 'Menu', item: item})}
-            >
+            <div class={item.active ? 'menu_item clicked activeLink' : 'menu_item clicked'}
+                 onClick={() => {this.clickMenu.emit({place: 'Menu', item: item}); this.toggleActiveLink(item)}}>
               {item.name}
             </div>
           </li>
         )
       })
     )
+  }
+
+  /**
+   * Показ активной ссылки меню
+   */
+  private toggleActiveLink (item){
+    item.active = true;
+    this.activeLink = item;
   }
   /**
    *  Получение данных о категориях
@@ -120,11 +112,35 @@ export class SCntFaqSearch implements ComponentInterface {
       item.map(item => {
         return(
           <li class="flex-grow-1">
-            <div class="hints clicked" onClick={() => this.clickCategory.emit({place: 'Category', item: item})}
-            >
+            <div class={item.active ? 'hints clicked activeHints' : 'hints clicked'}
+                 onClick={() => {this.clickCategory.emit({place: 'Category', item: item});
+                 this.toggleActiveHints(item)}}>
               {item.name}
             </div>
           </li>
+        )
+      })
+    )
+  }
+  /**
+   * Показ активной ссылки категорий
+   */
+  private toggleActiveHints (item){
+    item.active = true;
+    this.activeCategory = item;
+  }
+  /**
+   *  Получение данных о logo
+   */
+  private getLogo = (props) => {
+    let item = props.slice(0, 1);
+    return(
+      item.map(item => {
+        return(
+          <div class="search_img"
+               onClick={() => this.clickLogo.emit({place: 'logo', item: item})}
+               style={{ backgroundImage: "url(" + item.link + ")" }}>
+          </div>
         )
       })
     )

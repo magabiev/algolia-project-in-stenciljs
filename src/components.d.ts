@@ -5,29 +5,18 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { SFaqBlockSection, } from "./components/s-cnt-faq-block-section/interface/common.interface";
-import { SFaqBlocks, } from "./components/s-cnt-faq-block-section/res/view/s-cnt-faq-blocks/interface/common.interface";
-import { SFaqElements, } from "./components/s-cnt-faq-search/interface/common.interface";
+import { SFaqBlockHeader, } from "./components/s-cnt-faq-block-header/interface/common.interface";
+import { SFaqBlocks, } from "./components/s-cnt-faq-blocks/interface/common.interface";
+import { SFaqHeader, } from "./components/s-cnt-faq-header/interface/common.interface";
+import { SFaqLogoElements, SFaqSearchElements, } from "./components/s-cnt-faq-search/interface/common.interface";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface FirstPage {
     }
-    interface SCntFaqBlockSection {
+    interface SCntFaqBlockHeader {
         /**
           * Получение данных из массива для вывода
          */
-        "blockSection": SFaqBlockSection[];
+        "blockHeader": SFaqBlockHeader[];
     }
     interface SCntFaqBlocks {
         /**
@@ -35,31 +24,48 @@ export namespace Components {
          */
         "blocks": SFaqBlocks[];
     }
+    interface SCntFaqHeader {
+        "header": SFaqHeader[];
+    }
     interface SCntFaqSearch {
         /**
-          * Прием данных из массива
+          * Прием данных о категориях  из массива
          */
-        "header": SFaqElements[];
+        "category": SFaqSearchElements[];
+        /**
+          * Прием данных логотипе  из массива
+         */
+        "logo": SFaqLogoElements[];
+        /**
+          * Прием данных menu  из массива
+         */
+        "menu": SFaqSearchElements[];
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLFirstPageElement extends Components.FirstPage, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLFirstPageElement: {
+        prototype: HTMLFirstPageElement;
+        new (): HTMLFirstPageElement;
     };
-    interface HTMLSCntFaqBlockSectionElement extends Components.SCntFaqBlockSection, HTMLStencilElement {
+    interface HTMLSCntFaqBlockHeaderElement extends Components.SCntFaqBlockHeader, HTMLStencilElement {
     }
-    var HTMLSCntFaqBlockSectionElement: {
-        prototype: HTMLSCntFaqBlockSectionElement;
-        new (): HTMLSCntFaqBlockSectionElement;
+    var HTMLSCntFaqBlockHeaderElement: {
+        prototype: HTMLSCntFaqBlockHeaderElement;
+        new (): HTMLSCntFaqBlockHeaderElement;
     };
     interface HTMLSCntFaqBlocksElement extends Components.SCntFaqBlocks, HTMLStencilElement {
     }
     var HTMLSCntFaqBlocksElement: {
         prototype: HTMLSCntFaqBlocksElement;
         new (): HTMLSCntFaqBlocksElement;
+    };
+    interface HTMLSCntFaqHeaderElement extends Components.SCntFaqHeader, HTMLStencilElement {
+    }
+    var HTMLSCntFaqHeaderElement: {
+        prototype: HTMLSCntFaqHeaderElement;
+        new (): HTMLSCntFaqHeaderElement;
     };
     interface HTMLSCntFaqSearchElement extends Components.SCntFaqSearch, HTMLStencilElement {
     }
@@ -68,48 +74,21 @@ declare global {
         new (): HTMLSCntFaqSearchElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
-        "s-cnt-faq-block-section": HTMLSCntFaqBlockSectionElement;
+        "first-page": HTMLFirstPageElement;
+        "s-cnt-faq-block-header": HTMLSCntFaqBlockHeaderElement;
         "s-cnt-faq-blocks": HTMLSCntFaqBlocksElement;
+        "s-cnt-faq-header": HTMLSCntFaqHeaderElement;
         "s-cnt-faq-search": HTMLSCntFaqSearchElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface FirstPage {
     }
-    interface SCntFaqBlockSection {
+    interface SCntFaqBlockHeader {
         /**
           * Получение данных из массива для вывода
          */
-        "blockSection"?: SFaqBlockSection[];
-        /**
-          * Клик по блоку автора компонента 'blocks'
-         */
-        "onClickBlockAuthor"?: (event: CustomEvent<any>) => void;
-        /**
-          * Клик по Заголовку компонента 'blocks'
-         */
-        "onClickBlockHeader"?: (event: CustomEvent<any>) => void;
-        /**
-          * Клик по картинке компонента 'blocks'
-         */
-        "onClickBlockImg"?: (event: CustomEvent<any>) => void;
-        /**
-          * Клик по тексту компонента 'blocks'
-         */
-        "onClickBlockText"?: (event: CustomEvent<any>) => void;
+        "blockHeader"?: SFaqBlockHeader[];
         /**
           * Клик по кнопке на страницу вперед
          */
@@ -145,15 +124,26 @@ declare namespace LocalJSX {
          */
         "onClickBlockText"?: (event: CustomEvent<any>) => void;
     }
-    interface SCntFaqSearch {
-        /**
-          * Прием данных из массива
-         */
-        "header"?: SFaqElements[];
+    interface SCntFaqHeader {
+        "header"?: SFaqHeader[];
         /**
           * Клик по кнопке назад
          */
         "onClickBack"?: (event: CustomEvent<any>) => void;
+    }
+    interface SCntFaqSearch {
+        /**
+          * Прием данных о категориях  из массива
+         */
+        "category"?: SFaqSearchElements[];
+        /**
+          * Прием данных логотипе  из массива
+         */
+        "logo"?: SFaqLogoElements[];
+        /**
+          * Прием данных menu  из массива
+         */
+        "menu"?: SFaqSearchElements[];
         /**
           * Клик по категориям
          */
@@ -172,9 +162,10 @@ declare namespace LocalJSX {
         "onClickSearch"?: (event: CustomEvent<any>) => void;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
-        "s-cnt-faq-block-section": SCntFaqBlockSection;
+        "first-page": FirstPage;
+        "s-cnt-faq-block-header": SCntFaqBlockHeader;
         "s-cnt-faq-blocks": SCntFaqBlocks;
+        "s-cnt-faq-header": SCntFaqHeader;
         "s-cnt-faq-search": SCntFaqSearch;
     }
 }
@@ -182,9 +173,10 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
-            "s-cnt-faq-block-section": LocalJSX.SCntFaqBlockSection & JSXBase.HTMLAttributes<HTMLSCntFaqBlockSectionElement>;
+            "first-page": LocalJSX.FirstPage & JSXBase.HTMLAttributes<HTMLFirstPageElement>;
+            "s-cnt-faq-block-header": LocalJSX.SCntFaqBlockHeader & JSXBase.HTMLAttributes<HTMLSCntFaqBlockHeaderElement>;
             "s-cnt-faq-blocks": LocalJSX.SCntFaqBlocks & JSXBase.HTMLAttributes<HTMLSCntFaqBlocksElement>;
+            "s-cnt-faq-header": LocalJSX.SCntFaqHeader & JSXBase.HTMLAttributes<HTMLSCntFaqHeaderElement>;
             "s-cnt-faq-search": LocalJSX.SCntFaqSearch & JSXBase.HTMLAttributes<HTMLSCntFaqSearchElement>;
         }
     }
