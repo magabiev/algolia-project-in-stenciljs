@@ -84,10 +84,14 @@ export class SCntFaqSearch implements ComponentInterface {
     let item = props.slice(0,5);
     return(
       item.map(item => {
+        if (this.activeLink !== item.id){
+          item.active = false;
+        }
         return(
           <li>
-            <div class={item.active ? 'menu_item clicked activeLink' : 'menu_item clicked'}
-                 onClick={() => {this.clickMenu.emit({place: 'Menu', item: item}); this.toggleActiveLink(item)}}>
+            <div class={item.active  ? 'menu_item clicked activeLink' : 'menu_item clicked'}
+                 onClick={() => {this.clickMenu.emit({place: 'Menu', item: item});
+                 this.toggleActiveLink(item)}}>
               {item.name}
             </div>
           </li>
@@ -95,13 +99,12 @@ export class SCntFaqSearch implements ComponentInterface {
       })
     )
   }
-
   /**
-   * Показ активной ссылки меню
+   * Показ активной ссылки
    */
   private toggleActiveLink (item){
-    item.active = true;
-    this.activeLink = item;
+    this.activeLink = item.id;
+      item.active = true
   }
   /**
    *  Получение данных о категориях
@@ -110,6 +113,9 @@ export class SCntFaqSearch implements ComponentInterface {
     let item = props.slice(0,9);
     return(
       item.map(item => {
+        if (this.activeCategory !== item.id){
+          item.active = false;
+        }
         return(
           <li class="flex-grow-1">
             <div class={item.active ? 'hints clicked activeHints' : 'hints clicked'}
@@ -127,7 +133,7 @@ export class SCntFaqSearch implements ComponentInterface {
    */
   private toggleActiveHints (item){
     item.active = true;
-    this.activeCategory = item;
+    this.activeCategory = item.id;
   }
   /**
    *  Получение данных о logo

@@ -82,7 +82,7 @@ export class SCntFaqBlockHeader implements ComponentInterface {
    * Деактивация левой кнопки переключения страницы
    */
   private checkDisableL (props){
-    if (props.pageActive == 1){
+    if (props.pageActive === 1){
       return this.disableLeft = true;
     }
 }
@@ -90,7 +90,7 @@ export class SCntFaqBlockHeader implements ComponentInterface {
    * Деактивация правой кнопки переключения страницы
    */
 private checkDisableR (props){
- if (props.pageActive == props.resultPages){
+ if (props.pageActive === props.resultPages){
     return this.disableRight = true;
   }
 }

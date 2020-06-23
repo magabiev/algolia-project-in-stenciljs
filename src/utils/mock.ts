@@ -1,11 +1,9 @@
-//header
 export  const header = [
   {
     id: 1,
     header: 'How can we help you?\n',
   }
 ];
-// search
 export const searchMenu = [
   { id:'all', name: 'all', active: false },
   { id:'website', name: 'website', active: false },
