@@ -40,6 +40,10 @@ export namespace Components {
           * Прием данных menu  из массива
          */
         "menu": SFaqSearchElements[];
+        /**
+          * Содержимое placeholder поисковика
+         */
+        "placeHolder": any;
     }
 }
 declare global {
@@ -160,6 +164,15 @@ declare namespace LocalJSX {
           * Клик по кнопке поиска
          */
         "onClickSearch"?: (event: CustomEvent<any>) => void;
+        "onInputValueDown"?: (event: CustomEvent<any>) => void;
+        /**
+          * Содержимое поля ввода поисковика
+         */
+        "onInputValueUp"?: (event: CustomEvent<any>) => void;
+        /**
+          * Содержимое placeholder поисковика
+         */
+        "placeHolder"?: any;
     }
     interface IntrinsicElements {
         "first-page": FirstPage;

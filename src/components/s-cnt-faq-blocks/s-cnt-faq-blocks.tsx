@@ -29,13 +29,22 @@ export class SCntFaqBlocks implements ComponentInterface {
    */
   @Event() clickBlockImg: EventEmitter;
   render() {
+    if (this.blocks.length !== 0){
+      return (
+        <div class="my_container">
+          <div class="row">
+            {this.getBlocks(this.blocks)}
+          </div>
+        </div>
+      )
+    }
     return (
-      <div class="my_container">
-        <div class="row">
-          {this.getBlocks(this.blocks)}
+      <div class="my_container d-flex">
+        <div class="m-auto not_data text-focus-in">
+          Нет данных
         </div>
       </div>
-    );
+    )
   }
   /**
    *  Прием данных из массива вывод через цикл

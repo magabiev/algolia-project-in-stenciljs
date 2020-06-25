@@ -21,6 +21,10 @@ export class SCntFaqSearch implements ComponentInterface {
    */
   @Prop() logo: SFaqLogoElements[] = [];
   /**
+   *  Содержимое placeholder поисковика
+   */
+  @Prop() placeHolder: any;
+  /**
    *  Клик по  ссылкам меню
    */
   @Event() clickMenu: EventEmitter;
@@ -44,7 +48,11 @@ export class SCntFaqSearch implements ComponentInterface {
    *  Состояние ссылок категорий при нажатии
    */
   @State() activeCategory: boolean;
-
+  /**
+   *  Содержимое поля ввода поисковика
+   */
+  @Event() inputValueUp: EventEmitter;
+  @Event() inputValueDown: EventEmitter;
   render() {
     return (
       <div class="my_container">
@@ -53,7 +61,7 @@ export class SCntFaqSearch implements ComponentInterface {
           <div class="row">
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 col-12">
               <ul class="menu d-flex justify-content-between">
-                {this.getLink(this.menu)}
+                {this.menu ? this.getLink(this.menu) : ''}
               </ul>
             </div>
           </div>
@@ -64,14 +72,16 @@ export class SCntFaqSearch implements ComponentInterface {
             <i class="fas fa-search"></i>
           </div>
           <div class="flex-grow-1">
-            <input class="input_block" type="text" placeholder="Learn about search-as-a-service…"/>
+            <input onKeyDown={() => this.inputValueDown.emit({'search': event})}
+                   onKeyUp={() => this.inputValueUp.emit({'search': event})}
+              class="input_block" type="text" placeholder={this.placeHolder ? this.placeHolder : ''}/>
           </div>
-          {this.getLogo(this.logo)}
+          {this.logo ? this.getLogo(this.logo) : ''}
         </div>
 
         <div class="category">
           <ul class="category_list d-flex">
-            {this.getCategory(this.category)}
+            {this.category ? this.getCategory(this.category) : ''}
           </ul>
         </div>
       </div>

@@ -12,6 +12,9 @@ export const searchMenu = [
   { id: 'docs', name: 'docs', active: false }
 
 ];
+export const placeHolder = [
+  'Learn about search-as-a-service…'
+];
 export const category = [
       { id:'site-search', name: 'Site Search', active: false },
       { id:'search-api',name: 'Search API', active: false },
@@ -32,7 +35,7 @@ export const blockHeader = [
   {
     id: 1,
     header: 'Blog',
-    results: 138,
+    results: 0,
     link: 'view blog',
     pageActive: 1,
     resultPages: 12,
