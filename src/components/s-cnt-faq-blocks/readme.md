@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description                            | Type           | Default |
-| -------- | --------- | -------------------------------------- | -------------- | ------- |
-| `blocks` | --        | Получение данных из массива для вывода | `SFaqBlocks[]` | `[]`    |
+| Property | Attribute | Description                            | Type         | Default     |
+| -------- | --------- | -------------------------------------- | ------------ | ----------- |
+| `blocks` | --        | Получение данных из массива для вывода | `SFaqBlocks` | `undefined` |
 
 
 ## Events

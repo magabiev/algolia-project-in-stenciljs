@@ -3,9 +3,9 @@
  */
 export interface SFaqBlocks {
   id: any;
-  header: string;
-  img: string;
-  text: string;
-  authorAvatar: string;
-  authorName: string;
+  header: any;
+  img: any;
+  text: any;
+  authorAvatar: any;
+  authorName: any;
 }

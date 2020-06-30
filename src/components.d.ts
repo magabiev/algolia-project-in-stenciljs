@@ -22,7 +22,7 @@ export namespace Components {
         /**
           * Получение данных из массива для вывода
          */
-        "blocks": SFaqBlocks[];
+        "blocks": SFaqBlocks;
     }
     interface SCntFaqHeader {
         "header": SFaqHeader[];
@@ -110,7 +110,7 @@ declare namespace LocalJSX {
         /**
           * Получение данных из массива для вывода
          */
-        "blocks"?: SFaqBlocks[];
+        "blocks"?: SFaqBlocks;
         /**
           * Клик по блоку автора
          */

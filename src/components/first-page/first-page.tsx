@@ -28,11 +28,19 @@ export class FirstPage implements ComponentInterface {
                                 onClickLink={(item) => clicked(item.detail)}
                                 onClickRight={(item) => clicked(item.detail)}
                                 onClickLeft={(item) => clicked(item.detail)}/>
-        <s-cnt-faq-blocks blocks={blocks}
-                          onClickBlockHeader={(item) => clicked(item.detail)}
-                          onClickBlockText={(item) => clicked(item.detail)}
-                          onClickBlockAuthor={(item) => clicked(item.detail)}
-                          onClickBlockImg={(item) => clicked(item.detail)}/>
+        <div class="my_container">
+          <div class="row">
+            {blocks.map(item => {
+              return(
+                <s-cnt-faq-blocks class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12" blocks={item}
+                                  onClickBlockHeader={(item) => clicked(item.detail)}
+                                  onClickBlockText={(item) => clicked(item.detail)}
+                                  onClickBlockAuthor={(item) => clicked(item.detail)}
+                                  onClickBlockImg={(item) => clicked(item.detail)}/>
+              )
+            })}
+          </div>
+        </div>
       </div>
     );
   }
