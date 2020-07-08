@@ -1,6 +1,6 @@
-import {Component, ComponentInterface, EventEmitter, Event, h, Prop, State} from '@stencil/core';
+import {Component, ComponentInterface, EventEmitter, Event, h, Prop, State, Listen} from '@stencil/core';
 import {SFaqSearchElements, SFaqLogoElements} from "./interface/common.interface";
-
+import {parseHtmlToFragment} from "@stencil/core/mock-doc";
 @Component({
   tag: 's-cnt-faq-search',
   styleUrl: 's-cnt-faq-search.css',
@@ -25,6 +25,10 @@ export class SCntFaqSearch implements ComponentInterface {
    */
   @Prop() placeHolder: any;
   /**
+   * Прием данных об элементах поиска
+   */
+  @Prop() searchHints: any;
+  /**
    *  Клик по  ссылкам меню
    */
   @Event() clickMenu: EventEmitter;
@@ -41,6 +45,10 @@ export class SCntFaqSearch implements ComponentInterface {
    */
   @Event() clickCategory: EventEmitter;
   /**
+   * Клик по подсказкам в поисковике
+   */
+  @Event() clickSearchHint: EventEmitter;
+  /**
    *  Состояние ссылок меню при нажатии
    */
   @State() activeLink: boolean;
@@ -53,6 +61,35 @@ export class SCntFaqSearch implements ComponentInterface {
    */
   @Event() inputValueUp: EventEmitter;
   @Event() inputValueDown: EventEmitter;
+  /**
+   * Получение узла общего блока поисковика
+   */
+  public ourInputBlock: any;
+  /**
+   * Получение узла поисковика
+   */
+  public ourInput: any;
+  /**
+   * Получение узла общего блока подсказок поисковика
+   */
+  @State() searchHintsVisible: boolean;
+  /**
+   * Текст из поисковых подсказок
+   */
+  @State() innerSearchHints: any;
+  /**
+   * Анимация уменьшения поисковика
+   */
+  @Listen("click", {target: "window"})
+  notScale(event) {
+    if (event.target !== this.ourInput){
+      this.ourInputBlock.style.transform = 'scale(1)';
+      this.ourInputBlock.style.borderBottom = '';
+      this.ourInputBlock.style.boxShadow = '';
+      this.searchHintsVisible = false;
+
+    }
+  }
   render() {
     return (
       <div class="my_container">
@@ -67,18 +104,27 @@ export class SCntFaqSearch implements ComponentInterface {
           </div>
         </div>
 
-        <div class="input_section d-flex align-items-center justify-content-between">
+        <div ref={(el) => this.ourInputBlock = el}
+          class="input_section d-flex align-items-center justify-content-between">
           <div class="search_btn clicked" onClick={() => this.clickSearch.emit('Search')}>
             <i class="fas fa-search"></i>
           </div>
           <div class="flex-grow-1">
-            <input onKeyDown={() => this.inputValueDown.emit({'search': event})}
+            <input value={parseHtmlToFragment(this.innerSearchHints).innerText}
+                 ref={(el) => this.ourInput = el}
+                  onFocus={(event) => this.animationInput(event)}
+                   onKeyDown={() => this.inputValueDown.emit({'search': event})}
                    onKeyUp={() => this.inputValueUp.emit({'search': event})}
               class="input_block" type="text" placeholder={this.placeHolder ? this.placeHolder : ''}/>
           </div>
           {this.logo ? this.getLogo(this.logo) : ''}
         </div>
 
+        <div class="parent_search_hints">
+          <div class={this.searchHintsVisible ? 'second_hints_parent' : 'second_hints_parent_hidden'}>
+            {this.searchHints ? this.getSearchHints(this.searchHints) : this.notDataSearch()}
+          </div>
+        </div>
         <div class="category">
           <ul class="category_list d-flex">
             {this.category ? this.getCategory(this.category) : ''}
@@ -161,4 +207,60 @@ export class SCntFaqSearch implements ComponentInterface {
       })
     )
   }
+  /**
+   * Анимация увеличения поисковика
+   */
+  private animationInput(event) {
+    if (event.target === this.ourInput){
+      this.ourInputBlock.style.transform = 'scale(1.06)';
+      this.ourInputBlock.style.boxShadow = '0 2px 4px rgba(0, 0, 0, .2)';
+      this.ourInputBlock.style.borderBottom = '3px solid #5468ff';
+      this.searchHintsVisible = true;
+    }
+  }
+  /**
+   * Поучение данных о поисковых подсказках
+   */
+  private getSearchHints = (props) => {
+    return(
+      <div>
+        {props.map(item => {
+          return(
+            <div class="search_hints clicked"
+                 onClick={() => {this.clickSearchHint.emit({place: 'Search hint', item: item}); this.innerSearchHints = item.header}}>
+              <div class="d-flex align-items-center">
+                <div class="hints_img mr-3" style={{ backgroundImage: "url(" + item.img + ")" }}
+                ></div>
+                <div
+                  class="hints_text" innerHTML={item.header.slice(0, 35)}>
+                  ...
+                </div>
+              </div>
+              <div>
+                <div class="hints_select d-flex">
+                  <i class="fas fa-level-down-alt"></i>
+                </div>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    )
+ }
+  /**
+   * Выводится если нет данных для поиска
+   */
+ private notDataSearch = () => {
+    return (
+      <div class="search_hints">
+        <div class="d-flex align-items-center">
+          <div class="hints_text text-muted">
+            Ничего не найдено
+          </div>
+        </div>
+        <div>
+        </div>
+      </div>
+    )
+ }
 }

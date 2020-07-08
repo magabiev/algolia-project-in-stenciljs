@@ -27,6 +27,7 @@
   background-color: #f5f5fa;
   padding: 0 32px;
   height: 80px;
+  transition: 0.5s;
 }
 .input_block{
   outline: none;
@@ -91,6 +92,56 @@
 .activeHints{
   background-color: #d3d3dd;
 }
+.parent_search_hints{
+  z-index: 5;
+  width: 100%;
+  position: relative;
+}
+.second_hints_parent{
+  position: absolute;
+  width: inherit;
+  transform-origin: top;
+  transition: 0.5s;
+  height: 63px;
+}
+.second_hints_parent_hidden{
+  position: absolute;
+  width: inherit;
+  transition: 0.5s;
+  transform-origin: top;
+  transform: scaleY(0);
+  overflow: hidden;
+}
+.search_hints{
+  height: 63.6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+  width: inherit;
+  transform: scale(1.06);
+  padding: 10px 32px 10px 32px;
+  margin-top: 3px;
+  transition: 0.5s;
+}
+.search_hints:hover{
+  background-color: #dfdfe1;
+}
+.search_hints:hover .hints_select{
+  color: #5468ff;
+}
+.hints_img{
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  background-size: cover;
+  background-position: center;
+}
+.hints_select{
+  transform: rotate(90deg);
+
+}
 @media only screen and (max-width: 1065px ){
   .hints:empty{
     margin: auto;
@@ -108,11 +159,24 @@
     color: #3A416F;
     font-size: 28px;
   }
-
+  .hints_text{
+    font-size: 12px;
+  }
+  .hints_img{
+    width: 25px;
+    height: 25px;
+  }
+  .search_hints{
+    padding: 10px 16px 10px 16px;
+  }
 }
 @media only screen and (max-width: 530px ){
   .input_block{
     font-size: 20px;
+  }
+  .hints_img{
+    width: 30px;
+    height: 30px;
   }
 }
 @media only screen and (max-width: 645px ){
@@ -123,13 +187,18 @@
     background-position: -55px;
     background-repeat: no-repeat;
   }
+  .hints_text{
+    font-size: 14px;
+  }
 }
 @media only screen and (max-width: 767px ){
   .menu{
     padding-left: 0;
     padding-top: 10px;
   }
-
+  .hints_text{
+    font-size: 15px;
+  }
 }
 @media only screen and (max-width: 959px ){
   .category{

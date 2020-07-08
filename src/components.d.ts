@@ -44,6 +44,10 @@ export namespace Components {
           * Содержимое placeholder поисковика
          */
         "placeHolder": any;
+        /**
+          * Прием данных об элементах поиска
+         */
+        "searchHints": any;
     }
 }
 declare global {
@@ -164,6 +168,10 @@ declare namespace LocalJSX {
           * Клик по кнопке поиска
          */
         "onClickSearch"?: (event: CustomEvent<any>) => void;
+        /**
+          * Клик по подсказкам в поисковике
+         */
+        "onClickSearchHint"?: (event: CustomEvent<any>) => void;
         "onInputValueDown"?: (event: CustomEvent<any>) => void;
         /**
           * Содержимое поля ввода поисковика
@@ -173,6 +181,10 @@ declare namespace LocalJSX {
           * Содержимое placeholder поисковика
          */
         "placeHolder"?: any;
+        /**
+          * Прием данных об элементах поиска
+         */
+        "searchHints"?: any;
     }
     interface IntrinsicElements {
         "first-page": FirstPage;

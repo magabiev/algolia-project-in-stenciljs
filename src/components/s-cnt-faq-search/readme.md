@@ -13,18 +13,20 @@
 | `logo`        | --             | Прием данных логотипе  из массива     | `SFaqLogoElements[]`   | `[]`        |
 | `menu`        | --             | Прием данных menu  из массива         | `SFaqSearchElements[]` | `[]`        |
 | `placeHolder` | `place-holder` | Содержимое placeholder поисковика     | `any`                  | `undefined` |
+| `searchHints` | `search-hints` | Прием данных об элементах поиска      | `any`                  | `undefined` |
 
 
 ## Events
 
-| Event            | Description                      | Type               |
-| ---------------- | -------------------------------- | ------------------ |
-| `clickCategory`  | Клик по категориям               | `CustomEvent<any>` |
-| `clickLogo`      | Клик по Логотипу                 | `CustomEvent<any>` |
-| `clickMenu`      | Клик по  ссылкам меню            | `CustomEvent<any>` |
-| `clickSearch`    | Клик по кнопке поиска            | `CustomEvent<any>` |
-| `inputValueDown` |                                  | `CustomEvent<any>` |
-| `inputValueUp`   | Содержимое поля ввода поисковика | `CustomEvent<any>` |
+| Event             | Description                      | Type               |
+| ----------------- | -------------------------------- | ------------------ |
+| `clickCategory`   | Клик по категориям               | `CustomEvent<any>` |
+| `clickLogo`       | Клик по Логотипу                 | `CustomEvent<any>` |
+| `clickMenu`       | Клик по  ссылкам меню            | `CustomEvent<any>` |
+| `clickSearch`     | Клик по кнопке поиска            | `CustomEvent<any>` |
+| `clickSearchHint` | Клик по подсказкам в поисковике  | `CustomEvent<any>` |
+| `inputValueDown`  |                                  | `CustomEvent<any>` |
+| `inputValueUp`    | Содержимое поля ввода поисковика | `CustomEvent<any>` |
 
 
 ## Dependencies

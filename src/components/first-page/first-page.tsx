@@ -17,8 +17,9 @@ export class FirstPage implements ComponentInterface {
       <div>
         <s-cnt-faq-header header={header}
                           onClickBack={(item) => clicked(item.detail)}/>
-        <s-cnt-faq-search menu={searchMenu} category={category} logo={logo} placeHolder={placeHolder}
+        <s-cnt-faq-search menu={searchMenu} category={category} logo={logo} placeHolder={placeHolder} searchHints={blocks}
                           onClickMenu={(item) => clicked(item.detail)}
+                          onClickSearchHint={(item) => clicked(item.detail)}
                           onClickSearch={(item) => clicked(item.detail)}
                           onClickLogo={(item) => clicked(item.detail)}
                           onClickCategory={(item) => clicked(item.detail)}
