@@ -158,3 +158,8 @@ export const blocks = [
   authorAction: 'Product Marketing Manager'
 },
 ];
+export const placeholderValue = [
+  {
+    text: 'Введите запрос',
+  }
+];

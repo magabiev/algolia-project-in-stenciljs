@@ -9,6 +9,7 @@ import { SFaqBlockHeader, } from "./components/s-cnt-faq-block-header/interface/
 import { SFaqBlocks, } from "./components/s-cnt-faq-blocks/interface/common.interface";
 import { SFaqHeader, } from "./components/s-cnt-faq-header/interface/common.interface";
 import { SFaqLogoElements, SFaqSearchElements, } from "./components/s-cnt-faq-search/interface/common.interface";
+import { SCntFaqSearchHintElem, SCntFaqSearchPlaceElem, } from "./components/s-cnt-faq-search-pop-up/interface/common.interface";
 export namespace Components {
     interface FirstPage {
     }
@@ -49,6 +50,16 @@ export namespace Components {
          */
         "searchHints": any;
     }
+    interface SCntFaqSearchPopUp {
+        /**
+          * Прием данных из массива
+         */
+        "searchHintsData": SCntFaqSearchHintElem[];
+        /**
+          * Содержимое placeholder
+         */
+        "searchPlace": SCntFaqSearchPlaceElem[];
+    }
 }
 declare global {
     interface HTMLFirstPageElement extends Components.FirstPage, HTMLStencilElement {
@@ -81,12 +92,19 @@ declare global {
         prototype: HTMLSCntFaqSearchElement;
         new (): HTMLSCntFaqSearchElement;
     };
+    interface HTMLSCntFaqSearchPopUpElement extends Components.SCntFaqSearchPopUp, HTMLStencilElement {
+    }
+    var HTMLSCntFaqSearchPopUpElement: {
+        prototype: HTMLSCntFaqSearchPopUpElement;
+        new (): HTMLSCntFaqSearchPopUpElement;
+    };
     interface HTMLElementTagNameMap {
         "first-page": HTMLFirstPageElement;
         "s-cnt-faq-block-header": HTMLSCntFaqBlockHeaderElement;
         "s-cnt-faq-blocks": HTMLSCntFaqBlocksElement;
         "s-cnt-faq-header": HTMLSCntFaqHeaderElement;
         "s-cnt-faq-search": HTMLSCntFaqSearchElement;
+        "s-cnt-faq-search-pop-up": HTMLSCntFaqSearchPopUpElement;
     }
 }
 declare namespace LocalJSX {
@@ -186,12 +204,40 @@ declare namespace LocalJSX {
          */
         "searchHints"?: any;
     }
+    interface SCntFaqSearchPopUp {
+        /**
+          * Клик по черному блоку
+         */
+        "onClickBlackBlock"?: (event: CustomEvent<any>) => void;
+        /**
+          * Клик по подсказкам поисковика
+         */
+        "onClickHints"?: (event: CustomEvent<any>) => void;
+        /**
+          * Клик по кнопке поиск
+         */
+        "onClickSearchPop"?: (event: CustomEvent<any>) => void;
+        "onSearchKeyDown"?: (event: CustomEvent<any>) => void;
+        /**
+          * Содержимое поля ввода поисковика
+         */
+        "onSearchKeyUp"?: (event: CustomEvent<any>) => void;
+        /**
+          * Прием данных из массива
+         */
+        "searchHintsData"?: SCntFaqSearchHintElem[];
+        /**
+          * Содержимое placeholder
+         */
+        "searchPlace"?: SCntFaqSearchPlaceElem[];
+    }
     interface IntrinsicElements {
         "first-page": FirstPage;
         "s-cnt-faq-block-header": SCntFaqBlockHeader;
         "s-cnt-faq-blocks": SCntFaqBlocks;
         "s-cnt-faq-header": SCntFaqHeader;
         "s-cnt-faq-search": SCntFaqSearch;
+        "s-cnt-faq-search-pop-up": SCntFaqSearchPopUp;
     }
 }
 export { LocalJSX as JSX };
@@ -203,6 +249,7 @@ declare module "@stencil/core" {
             "s-cnt-faq-blocks": LocalJSX.SCntFaqBlocks & JSXBase.HTMLAttributes<HTMLSCntFaqBlocksElement>;
             "s-cnt-faq-header": LocalJSX.SCntFaqHeader & JSXBase.HTMLAttributes<HTMLSCntFaqHeaderElement>;
             "s-cnt-faq-search": LocalJSX.SCntFaqSearch & JSXBase.HTMLAttributes<HTMLSCntFaqSearchElement>;
+            "s-cnt-faq-search-pop-up": LocalJSX.SCntFaqSearchPopUp & JSXBase.HTMLAttributes<HTMLSCntFaqSearchPopUpElement>;
         }
     }
 }

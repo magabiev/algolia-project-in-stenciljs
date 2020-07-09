@@ -1,5 +1,5 @@
 import { Component, ComponentInterface,  h } from '@stencil/core';
-import {blockHeader, blocks, category, header, searchMenu, logo, placeHolder} from "../../utils/mock";
+import {blockHeader, blocks, category, header, searchMenu, logo, placeHolder, placeholderValue} from "../../utils/mock";
 
 @Component({
   tag: 'first-page',
@@ -42,6 +42,12 @@ export class FirstPage implements ComponentInterface {
             })}
           </div>
         </div>
+        <s-cnt-faq-search-pop-up searchHintsData={blocks} searchPlace={placeholderValue}
+                                 onClickBlackBlock={(item) => clicked(item.detail)}
+                                 onClickSearchPop={(item) => clicked(item.detail)}
+                                 onClickHints={(item) => clicked(item.detail)}
+                                 onSearchKeyDown={(item) => clicked(item.detail)}
+                                 onSearchKeyUp={(item) => clicked(item.detail)}/>
       </div>
     );
   }
