@@ -34,7 +34,7 @@
   top: 50%;
   left: 15%;
   z-index: 11;
-  position: absolute;
+  position: fixed;
   margin: auto;
   border-bottom: 1px solid #ede8e8;
 }
@@ -53,13 +53,22 @@
   font-size: 25px;
 }
 .search_hint_img{
+  min-width: 40px;
   width: 40px;
   height: 40px;
   background-position: center;
   background-size: cover;
   border-radius: 5px;
 }
+.search_hint_text{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
 .main_hints{
+  overflow-y: scroll;
+  -ms-overflow-style: none;
   transform: scaleY(0);
   transform-origin: top;
   border-bottom-left-radius: 5px;
@@ -69,6 +78,36 @@
   position: absolute;
   width: 100%;
   left: 0;
+  height: calc(60vh - 70px);
+}
+.back_in_anim{
+  display: flex;
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  font-size: 20px;
+}
+.backAnim{
+  text-align: center;
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  z-index: 110;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: black;
+  background-color: white;
+  box-shadow: 0 5px 15px 0 rgba(37,44,97,.15), 0 2px 4px 0 rgba(93,100,148,.2);
+  transition: 0.3s;
+}
+.backAnim:hover{
+  color: grey;
+}
+.main_hints::-webkit-scrollbar{
+  width: 0;
 }
 .paren_hints{
   border-radius: 5px;
@@ -86,8 +125,12 @@
 .paren_hints:hover .select{
   color: grey;
 }
-.select{
+.fa-level-down-alt{
   transform: rotate(90deg);
+}
+.select{
+  width: 30px;
+  text-align: center;
 }
 @keyframes scale_hints {
   0%{
@@ -130,7 +173,7 @@
     top: 50%;
   }
   100%{
-    top: 20%;
+    top: 10%;
   }
 }
 @keyframes translate_none {
@@ -170,5 +213,21 @@
   }
   .input_btn{
     font-size: 20px;
+  }
+  .main_hints{
+    height: calc(65vh - 60px);
+  }
+  @keyframes translate {
+    0%{
+      top: 50%;
+    }
+    100%{
+      top: 2.5%;
+    }
+  }
+}
+@media only screen and (max-width: 374px) {
+  .main_hints{
+    height: calc(62vh - 60px);
   }
 }

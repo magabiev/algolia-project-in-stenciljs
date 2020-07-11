@@ -206,6 +206,10 @@ declare namespace LocalJSX {
     }
     interface SCntFaqSearchPopUp {
         /**
+          * Клик по кнопке назад
+         */
+        "onClickBackAnim"?: (event: CustomEvent<any>) => void;
+        /**
           * Клик по черному блоку
          */
         "onClickBlackBlock"?: (event: CustomEvent<any>) => void;

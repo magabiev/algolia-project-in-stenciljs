@@ -29,6 +29,10 @@ export class SCntFaqSearchPopUp implements ComponentInterface {
    */
   @Event() clickHints: EventEmitter;
   /**
+   * Клик по кнопке назад
+   */
+  @Event() clickBackAnim: EventEmitter;
+  /**
    *  Содержимое поля ввода поисковика
    */
   @Event() searchKeyUp: EventEmitter;
@@ -83,7 +87,13 @@ export class SCntFaqSearchPopUp implements ComponentInterface {
             {this.checkData() ? this.getSearchHints(this.searchHintsData) : this.notDataSearch()}
           </div>
         </div>
-
+        </div>
+        <div class="backAnim clicked" onClick={() => {this.clickBackAnim.emit('Back'); this.hideHints()}}>
+          <div class="back_in_anim">
+            <div class="m-auto">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -114,21 +124,16 @@ export class SCntFaqSearchPopUp implements ComponentInterface {
    * Поучение данных о поисковых подсказках
    */
   private getSearchHints = (props) => {
-    let item = props.slice(0, 6);
+    let item = props.slice(0, 12);
     return(
       item.map(item => {
           return(
             <div ref={(el) => this.ourSearchHintBlock = el}
               onClick={() => {this.clickHints.emit({place: 'Search hint', item: item}); this.searchFormValue = item.header; this.hideHints()}}
               class="paren_hints clicked">
-              <div class="d-flex align-items-center">
-                <div class="search_hint_img mr-3" style={{ backgroundImage: "url(" + item.img + ")" }}></div>
-                <div class="search_hint_text" innerHTML={item.header.slice(0, 15)}
-                >...</div>
-              </div>
-              <div class="d-flex">
-                <div class="select"><i class="fas fa-level-down-alt"></i></div>
-              </div>
+              <div class="search_hint_img mr-3" style={{ backgroundImage: "url(" + item.img + ")" }}></div>
+              <div class="search_hint_text" innerHTML={item.header}></div>
+              <div class="select"><i class="fas fa-level-down-alt"></i></div>
             </div>
           )
         })

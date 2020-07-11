@@ -232,7 +232,7 @@ export class SCntFaqSearch implements ComponentInterface {
                 <div class="hints_img mr-3" style={{ backgroundImage: "url(" + item.img + ")" }}
                 ></div>
                 <div
-                  class="hints_text" innerHTML={item.header.slice(0, 35)}>
+                  class="hints_text" innerHTML={item.header}>
                   ...
                 </div>
               </div>
